@@ -18,8 +18,8 @@ class NetworkElement(object):
     def routing_table(self):
         try:
             return RoutingTable(self._ne.getRoutingTable())
-        except jnettool.tools.elements.MissingVar:
-            logging.exception('No routing table found')
+        except (jnettool.tools.elements.MissingVar, Exception):
+            logging.info('No routing table found')
             self._ne.cleanup('rollback')
             return RoutingTable()
 
