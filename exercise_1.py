@@ -1,12 +1,13 @@
-import pynettool.tools.elements.NetworkElement
-import pynettool.tools.Routing
-import pynettool.tools.RouteInspector
+import logging
 
+import jnettool.tools.elements.NetworkElement
+import jnettool.tools.Routing
+import jnettool.tools.RouteInspector
 
-ne = pynettool.tools.elements.NetworkElement('171.0.2.45')
+ne = jnettool.tools.elements.NetworkElement('171.0.2.45')
 try:
     routing_table = ne.getRoutingTable()
-except pynettool.tools.elements.MissingVar:
+except jnettool.tools.elements.MissingVar:
     logging.exception('No routing table found')
     ne.cleanup('rollback')
 else:
