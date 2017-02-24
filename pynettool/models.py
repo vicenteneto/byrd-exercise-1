@@ -24,6 +24,22 @@ class NetworkElement(object):
             return RoutingTable()
 
 
-class RoutingTable(object):
+class RoutingTable(list):
     def __init__(self, routing_table=None):
         self._rt = routing_table
+        routes = [Route(self._rt.getRouteByIndex(RToffset)) for RToffset in range(self._rt.getSize())] \
+            if self._rt else []
+        super(RoutingTable, self).__init__(routes)
+
+
+class Route(object):
+    def __init__(self, route):
+        self._route = route
+
+    @property
+    def name(self):
+        return self._route.getName()
+
+    @property
+    def ip_addr(self):
+        return self._route.getIpAddr()
