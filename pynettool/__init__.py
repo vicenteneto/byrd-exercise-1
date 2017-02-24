@@ -7,6 +7,8 @@ PyNetTool is a Python wrapper for the jnettool library.
 
 import logging
 
+from .models import NetworkElement
+
 __title__ = 'pynettool'
 __author__ = 'Vicente Neto'
 
